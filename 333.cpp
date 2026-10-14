@@ -7,11 +7,12 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-
 using namespace std;
 
 int main() {
 	double l, p, p_1, h, F, K, Reactions, angle_fe;
+	//i set the max number of variable‑peak for the cycle "for"
+	int stepCount = 4;
 
 	//displaying the text "a=" on the user's screen and entering the value from the keyboard
 	cout << "p = ";
@@ -25,9 +26,6 @@ int main() {
 
 	cout << "F = ";
 	cin >> F;
-
-	//i set the max number of variable‑peak for the cycle "for"
-	int stepCount = 4;
 
 	for (int stepIndex = 0; stepIndex < stepCount; ++stepIndex) {
 
@@ -55,13 +53,11 @@ int main() {
 		//we are checking the condition for K
 		if (K > 0) {
 			Reactions = l * 100 * F * p_1 * ((sqrt(p / p_1)) - 1.0);
-			
 			angle_fe = acos((h / l) * sqrt(p / p_1));
 		}
 
 		else if (K < 0){
 			Reactions = l * 100 * F * p_1 * (((h * p) / (l * p_1)) - 1.0);
-
 			angle_fe = 0;
 		}
 
@@ -71,6 +67,7 @@ int main() {
 		cout << Reactions << setw(15) << K << setw(15) << angle_fe << endl;
 
 	}
+	
 	return 0;
 }
 
